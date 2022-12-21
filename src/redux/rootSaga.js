@@ -1,9 +1,11 @@
-import { applyMiddleware } from "redux";
-import createSagaMiddleware from "redux-saga";
+import { all, fork } from "redux-saga/effects";
 import "regenerator-runtime/runtime";
 
-function* exampleSaga() {
-  console.log("Example saga reached");
+function* rootSaga() {
+  yield all([
+    fork("exampleSaga"),
+    //inserire tutti i saga
+  ]);
 }
 
-export default exampleSaga;
+export default rootSaga;
