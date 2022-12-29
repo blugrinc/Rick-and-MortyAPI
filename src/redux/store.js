@@ -1,16 +1,15 @@
-import { configureStore } from "@reduxjs/toolkit";
-
-//IMPORT PER MIDDLEWARE DI SAGA
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
-//ROOT CONTENTENTE TUTTI I SAGA E I REDUCER RAGGRUPPATI
 import rootSaga from "./rootSaga";
-import createRootReducer from "./rootReducer";
+import homePageSlice from "../app/pages/HomePage/store/homePage.slice";
 
 const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
-  reducer: createRootReducer(),
-  middleware: () => [sagaMiddleware],
+  reducer: combineReducers({
+    homePageSlice,
+  }),
+  middleware: () => sagaMiddleware,
 });
 
 sagaMiddleware.run(rootSaga);

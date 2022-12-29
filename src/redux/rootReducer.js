@@ -1,9 +1,9 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import { connectRouter } from "connected-react-router";
+import { homePageSlice } from "../app/pages/HomePage/store/homePage.slice";
 
-const createRootReducer = (history) =>
+const createRootReducer = () =>
   combineReducers({
-    router: connectRouter(history),
+    homePageSlice,
     /* inserire sliceReducer */
   });
 

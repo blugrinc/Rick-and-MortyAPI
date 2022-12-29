@@ -1,11 +1,8 @@
 import { all, fork } from "redux-saga/effects";
-import "regenerator-runtime/runtime";
+import homePageSaga from "../app/pages/HomePage/store/homePage.saga";
 
 function* rootSaga() {
-  yield all([
-    fork("exampleSaga"),
-    //inserire tutti i saga
-  ]);
+  yield all([fork(homePageSaga)]);
 }
 
 export default rootSaga;
