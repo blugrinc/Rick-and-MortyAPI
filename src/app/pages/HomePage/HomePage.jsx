@@ -80,11 +80,22 @@ export const HomePage = () => {
   const [newCharacter, setState] = useState(character);
 
   useEffect(() => {
-    /* dispatch(getHomePageData()); */
-    fetch("https://rickandmortyapi.com/api/character")
-      .then((response) => response.json())
-      .then((json) => console.log(json));
+    dispatch(getHomePageData());
   }, []);
 
-  return <div>{character.name}</div>;
+  return (
+    <div>
+      {/* <img
+        style={{
+          width: "100vw",
+          height: "100vh",
+          backgroundSize: "cover",
+        }}
+        className="background-image"
+        src="https://images6.alphacoders.com/909/thumb-1920-909641.png"
+        alt="rick and morty"
+      /> */}
+      <span> {character.name} </span>
+    </div>
+  );
 };

@@ -7,7 +7,9 @@ export const homePageSlice = createSlice({
   name: "homePageSlice",
   initialState,
   reducers: {
-    getHomePageData: () => {},
+    getHomePageData: () => {
+      console.log("HOME: SLICE");
+    },
   },
 });
 

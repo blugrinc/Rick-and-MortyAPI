@@ -1,15 +1,17 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "./rootSaga";
 import homePageSlice from "../app/pages/HomePage/store/homePage.slice";
+import charactersSlice from "../app/pages/CharactersPage/store/characterPage.slice";
 
 const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
-  reducer: combineReducers({
-    homePageSlice,
-  }),
-  middleware: () => sagaMiddleware,
+  reducer: {
+    home: homePageSlice,
+    characters: charactersSlice,
+  },
+  middleware: () => [sagaMiddleware],
 });
 
 sagaMiddleware.run(rootSaga);
