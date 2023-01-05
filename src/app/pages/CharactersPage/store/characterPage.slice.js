@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  name: "",
+  searchName: "",
   page: 1,
   length: null,
   result: [],
@@ -14,22 +14,33 @@ export const charactersSlice = createSlice({
 
   reducers: {
     startFetchingCharacters: () => {},
+    startFetchingSearch: () => {},
 
+    //cloading
     setLoading: (state, action) => {
       state.isLoading = action.payload;
     },
-
+    //Array of characters
     setCharacters: (state, action) => {
       state.result = action.payload;
     },
-
-    setLength: (state, action) => {
+    //pages
+    getAllPage: (state, action) => {
       state.length = action.payload;
+    },
+    //VERIFICARE PAGINE AVANTI E INDIETRO
+    nextPage: (state, action) => {
+      state.page = action.payload;
     },
   },
 });
 
-export const { startFetchingCharacters, setCharacters, setLength, setLoading } =
-  charactersSlice.actions;
+export const {
+  startFetchingCharacters,
+  startFetchingSearch,
+  setCharacters,
+  getAllPage,
+  setLoading,
+} = charactersSlice.actions;
 
 export default charactersSlice.reducer;

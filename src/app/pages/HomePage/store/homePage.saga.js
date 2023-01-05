@@ -1,9 +1,7 @@
 import { all, takeLatest } from "redux-saga/effects";
 import { getHomePageData } from "./homePage.slice";
 
-function* getUser() {
-  console.log("HOME: SAGA");
-}
+function* getUser() {}
 
 //WATCHER SAGAS
 export default function* homePageSaga() {

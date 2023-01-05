@@ -1,7 +1,12 @@
-export const Footer = () => {
+const Footer = () => {
   return (
     <footer>
-      <span> Rick and Morty API</span>
+      <span>
+        Powered by&nbsp;
+        <a href="https://rickandmortyapi.com/">Rick and Morty API</a>
+      </span>
     </footer>
   );
 };
+
+export default Footer;

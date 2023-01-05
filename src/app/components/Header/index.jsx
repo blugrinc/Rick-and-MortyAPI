@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
-export const Header = () => {
+const Header = () => {
   return (
     <div>
       <nav>
-        <button> Home </button>
-      </nav>
-      <nav>
-        <button> Character </button>
+        <button> go to Home </button>
+        <button> go to Character </button>
       </nav>
     </div>
   );
 };
+
+export default Header;

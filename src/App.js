@@ -1,5 +1,9 @@
 import React from "react";
 import "./App.css";
+
+import Header from "./app/components/Header/index";
+import Footer from "./app/components/Footer/index";
+
 import { HomePage } from "./app/pages/HomePage/HomePage";
 import { CharactersPage } from "./app/pages/CharactersPage/CharactersPage";
 
@@ -7,7 +11,6 @@ function App() {
   return (
     <div className="App">
       <CharactersPage />
-      <HomePage />
     </div>
   );
 }

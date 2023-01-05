@@ -7,9 +7,9 @@ export const selectPage = createSelector(
   (character) => character.page
 );
 
-export const selectName = createSelector(
+export const selectSearchedName = createSelector(
   [selectDomainList],
-  (character) => character.name
+  (character) => character.searchName
 );
 
 export const selectAllCharacters = createSelector(
