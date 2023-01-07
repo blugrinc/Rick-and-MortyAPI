@@ -14,7 +14,9 @@ export const charactersSlice = createSlice({
 
   reducers: {
     startFetchingCharacters: () => {},
-    startFetchingSearch: () => {},
+    startFetchingSearch: (state, action) => {
+      state.searchName = action.payload;
+    },
 
     //cloading
     setLoading: (state, action) => {
@@ -28,7 +30,7 @@ export const charactersSlice = createSlice({
     getAllPage: (state, action) => {
       state.length = action.payload;
     },
-    //VERIFICARE PAGINE AVANTI E INDIETRO
+
     nextPage: (state, action) => {
       state.page = action.payload;
     },
@@ -38,9 +40,10 @@ export const charactersSlice = createSlice({
 export const {
   startFetchingCharacters,
   startFetchingSearch,
+  setLoading,
   setCharacters,
   getAllPage,
-  setLoading,
+  nextPage,
 } = charactersSlice.actions;
 
 export default charactersSlice.reducer;

@@ -1,3 +1,13 @@
+import {
+  BoxCard,
+  Description,
+  DescriptionLeft,
+  DescriptionRight,
+  MoreInfo,
+  Name,
+  ImgContainer,
+} from "./style";
+
 export const CardCharacter = ({
   name,
   status,
@@ -10,25 +20,28 @@ export const CardCharacter = ({
   moreInfo,
 }) => {
   return (
-    <div>
-      <img alt={name} src={characterSource} />
-      <div>
-        <div>
-          <p>{name}</p>
+    <BoxCard>
+      <ImgContainer>
+        <img alt={name} src={characterSource} />{" "}
+      </ImgContainer>
+
+      <Description>
+        <DescriptionLeft>
+          <Name>{name}</Name>
           <p>
             {status} - {species}
           </p>
           <p>{gender}</p>
           <p>{type}</p>
-        </div>
-        <div>
+        </DescriptionLeft>
+        <DescriptionRight>
           <p>Origin: {originLocation}</p>
           <p>Location: {actualLocation}</p>
-        </div>
-        <div>
-          <a href={moreInfo}>More Info</a>
-        </div>
-      </div>
-    </div>
+        </DescriptionRight>
+        <MoreInfo>
+          <a href={moreInfo}>More Info </a>
+        </MoreInfo>
+      </Description>
+    </BoxCard>
   );
 };

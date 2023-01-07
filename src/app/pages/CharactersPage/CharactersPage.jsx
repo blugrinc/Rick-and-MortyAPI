@@ -11,13 +11,17 @@ import {
 } from "./store/characterPage.selector";
 
 import { CardCharacter } from "../../components/CardCharacter";
+import { Pagination } from "../../components/Pagination";
+import { Search } from "../../components/Search";
+
+//STYLED
+import { CharactersPageStyle } from "./style";
 
 export const CharactersPage = () => {
   const characters = useSelector(selectAllCharacters);
-  console.log(characters);
   const page = useSelector(selectPage);
   const searchName = useSelector(selectSearchedName);
-
+  console.log(characters);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,24 +33,26 @@ export const CharactersPage = () => {
   }, [page]);
 
   return (
-    <div>
-      <div> Form Search </div>
-      <div> {page} </div>
+    <CharactersPageStyle>
+      <Search />
+      <Pagination />
+
       <section>
         {characters.map((character) => (
           <CardCharacter
+            key={character.id}
             name={character.name}
             status={character.status}
             species={character.species}
             gender={character.gender}
             type={character.type}
-            characterSource={character.character}
+            characterSource={character.image}
             originLocation={character.origin.name}
             actualLocation={character.location.name}
             moreInfo={character.url}
           />
         ))}
       </section>
-    </div>
+    </CharactersPageStyle>
   );
 };

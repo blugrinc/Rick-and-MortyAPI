@@ -1,8 +1,8 @@
 const fetchWrapper = async (endpoint) => {
   const headers = { "Content-Type": "application/json" };
-
   //Axios
   const method = { method: "GET", headers: { ...headers } };
+
   const response = await fetch(
     `${process.env.REACT_APP_API_URL}${endpoint}`,
     method

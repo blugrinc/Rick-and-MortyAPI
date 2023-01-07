@@ -17,7 +17,6 @@ function* handleCharactersLoad() {
     const page = yield select(selectPage);
     const endpoint = `character/?page=${page}`;
     const response = yield call(fetchWrapper, endpoint);
-    console.log("PRIMO SAGA");
 
     if (!isEmpty(response)) {
       const { info, results } = response;
@@ -36,9 +35,10 @@ function* handleSearchCharacters() {
     yield put(setLoading(true));
     const page = yield select(selectPage);
     const name = yield select(selectSearchedName);
+
     const endpoint = `character/?page=${page}&name=${name}`;
     const response = yield call(fetchWrapper, endpoint);
-    console.log("SECONDO SAGA");
+    console.log("SECONDO SAGA", response);
 
     if (!isEmpty(response)) {
       const { info, results } = response;

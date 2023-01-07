@@ -16,3 +16,8 @@ export const selectAllCharacters = createSelector(
   [selectDomainList],
   (character) => character.result
 );
+
+export const selectLengthPage = createSelector(
+  [selectDomainList],
+  (character) => character.length
+);
