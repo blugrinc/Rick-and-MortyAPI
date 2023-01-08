@@ -24,6 +24,8 @@
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   box-sizing: inherit;
   font-family: var(--font-title);
   background-color: var(--color-bg-2);

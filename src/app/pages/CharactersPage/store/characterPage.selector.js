@@ -21,3 +21,13 @@ export const selectLengthPage = createSelector(
   [selectDomainList],
   (character) => character.length
 );
+
+export const selectError = createSelector(
+  [selectDomainList],
+  (character) => character.error
+);
+
+export const selectLoading = createSelector(
+  [selectDomainList],
+  (character) => character.isLoading
+);

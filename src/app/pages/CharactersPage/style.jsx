@@ -13,7 +13,7 @@ export const CharactersPageStyle = styled.div`
   section {
     display: grid;
     grid-gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     margin: 2rem auto;
   }
 `;

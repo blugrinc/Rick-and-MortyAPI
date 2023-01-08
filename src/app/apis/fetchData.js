@@ -13,5 +13,4 @@ const fetchWrapper = async (endpoint) => {
 
   return data;
 };
-
 export { fetchWrapper };

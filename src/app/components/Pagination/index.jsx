@@ -4,7 +4,9 @@ import {
   selectLengthPage,
   selectPage,
 } from "../../pages/CharactersPage/store/characterPage.selector";
-import { nextPage } from "../../pages/CharactersPage/store/characterPage.slice";
+import { setPage } from "../../pages/CharactersPage/store/characterPage.slice";
+import { PaginationStyle, CurrentPage, NumberList } from "./style";
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
 export const Pagination = () => {
   const page = useSelector(selectPage);
@@ -19,37 +21,46 @@ export const Pagination = () => {
 
   function toPrevPage() {
     if (page === 1) return;
-    dispatch(nextPage(page - 1));
+    dispatch(setPage(+page - 1));
   }
 
   function toNextPage() {
     if (page === length) return;
-    dispatch(nextPage(page + 1));
+    dispatch(setPage(+page + 1));
   }
 
-  function pageButton(number) {
-    console.log("schifo");
+  function pageButton(event) {
+    dispatch(setPage(event.target.value));
   }
 
   return (
-    <div>
-      {pages.map((i) => {
-        return (
-          <button key={i} onClick={pageButton(i)}>
-            {i}
-          </button>
-        );
-      })}
+    <>
+      <PaginationStyle>
+        <button onClick={toPrevPage} disabled={page === 1}>
+          <AiOutlineArrowLeft />
+        </button>
 
-      <button onClick={toPrevPage} disabled={page === 1}>
-        {page === 1 ? "<-" : `${page - 1} <-`}
-      </button>
-      <p>
-        {page}/{length}
-      </p>
-      {page !== length && (
-        <button onClick={toNextPage}>{` -> ${page + 1}`}</button>
-      )}
-    </div>
+        <CurrentPage>{`${page} / ${length}`}</CurrentPage>
+
+        <button onClick={toNextPage} disabled={page === length}>
+          <AiOutlineArrowRight />
+        </button>
+      </PaginationStyle>
+
+      {/* <NumberList>
+        {pages.map((i) => {
+          return (
+            <button
+              key={i}
+              value={i + 1}
+              onClick={pageButton}
+              disabled={page === i + 1}
+            >
+              {i + 1}
+            </button>
+          );
+        })}
+      </NumberList> */}
+    </>
   );
 };

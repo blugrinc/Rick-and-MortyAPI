@@ -3,27 +3,43 @@ import { useDispatch } from "react-redux";
 import { Formik, Form, Field } from "formik";
 
 import {
-  nextPage,
+  setPage,
   startFetchingSearch,
+  startFetchingCharacters,
 } from "../../pages/CharactersPage/store/characterPage.slice";
+import { SearchForm } from "./style";
+import { FaSearch } from "react-icons/fa";
+import { BiReset } from "react-icons/bi";
 
 export const Search = () => {
   const dispatch = useDispatch();
 
   function formSubmit(event) {
-    dispatch(nextPage(1));
+    dispatch(setPage(1));
     dispatch(startFetchingSearch(event.searchName));
+  }
+  function resetCharacter() {
+    dispatch(startFetchingCharacters());
   }
 
   return (
-    <div>
-      <Formik initialValues={{ searchName: "" }} onSubmit={formSubmit}>
+    <SearchForm>
+      <Formik
+        initialValues={{ searchName: "" }}
+        onSubmit={(values, { resetForm }) => {
+          formSubmit(values);
+          resetForm();
+        }}
+      >
         <Form>
+          <button onClick={resetCharacter}>ALL</button>
           <Field name="searchName" placeholder="search name" />
-          <button type="submit">search</button>
+          <button type="submit">
+            <FaSearch />
+          </button>
         </Form>
       </Formik>
-    </div>
+    </SearchForm>
   );
 };
 

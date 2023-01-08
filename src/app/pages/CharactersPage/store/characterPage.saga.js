@@ -1,4 +1,4 @@
-import { all, takeLatest, call, select, put } from "redux-saga/effects";
+import { all, takeLatest, call, select, put, race } from "redux-saga/effects";
 import { fetchWrapper } from "../../../apis/fetchData";
 
 import {
@@ -7,6 +7,7 @@ import {
   setCharacters,
   getAllPage,
   setLoading,
+  loadingError,
 } from "./characterPage.slice";
 import { selectSearchedName, selectPage } from "./characterPage.selector";
 import { isEmpty } from "lodash";
@@ -25,7 +26,7 @@ function* handleCharactersLoad() {
       yield put(setLoading(false));
     }
   } catch (error) {
-    console.log("getTest" + error);
+    yield put(loadingError(error));
     yield put(setLoading(false));
   }
 }
@@ -38,7 +39,6 @@ function* handleSearchCharacters() {
 
     const endpoint = `character/?page=${page}&name=${name}`;
     const response = yield call(fetchWrapper, endpoint);
-    console.log("SECONDO SAGA", response);
 
     if (!isEmpty(response)) {
       const { info, results } = response;
@@ -47,7 +47,7 @@ function* handleSearchCharacters() {
       yield put(setLoading(false));
     }
   } catch (error) {
-    console.log("getTest" + error);
+    yield put(loadingError(error));
     yield put(setLoading(false));
   }
 }

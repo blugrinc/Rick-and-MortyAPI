@@ -6,6 +6,7 @@ const initialState = {
   length: null,
   result: [],
   isLoading: false,
+  error: null,
 };
 
 export const charactersSlice = createSlice({
@@ -31,8 +32,12 @@ export const charactersSlice = createSlice({
       state.length = action.payload;
     },
 
-    nextPage: (state, action) => {
+    setPage: (state, action) => {
       state.page = action.payload;
+    },
+
+    loadingError: (state, action) => {
+      state.error = action.payload;
     },
   },
 });
@@ -43,7 +48,8 @@ export const {
   setLoading,
   setCharacters,
   getAllPage,
-  nextPage,
+  setPage,
+  loadingError,
 } = charactersSlice.actions;
 
 export default charactersSlice.reducer;
